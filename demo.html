@@ -2,10 +2,70 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>根据注指定属性排序</title>
 	</head>
 	<body>
-		<h1>hello world</h1>
-		<div>这么神奇的吗？学习git</div>
+		<script>
+			// 2, 5, 6, 4, 1, 3
+			let arr = [
+				{
+					id: 2,
+					name: '张三'
+				},{
+					id: 5,
+					name: '李四'
+				},{
+					id: 6,
+					name: '王五'
+				},{
+					id: 4,
+					name: '李六'
+				},{
+					id: 1,
+					name: '吴七'
+				},{
+					id: 3,
+					name: '马六'
+				}
+			]
+			// 递减
+			function diminishing (arr, attr) {
+		    let i = arr.length
+		    let j = 0
+		    var tempExchangVal
+		    while (i > 0) {
+		      for (j = 0; j < i - 1; j++) {
+		        if (arr[j][attr] < arr[j + 1][attr]) {
+		          tempExchangVal = arr[j]
+		          arr[j] = arr[j + 1]
+		          arr[j + 1] = tempExchangVal
+		        }
+		      }
+		      i--
+		    }
+		    return arr
+		  }
+		  let newArr = diminishing(arr, 'id')
+		  console.log(newArr)
+		  // 递增
+		  function incrementing (arr, attr) {
+				let i = arr.length
+		    let j = 0
+		    var tempExchangVal
+		    while (i > 0) {
+		      for (j = 0; j < i - 1; j++) {
+		        if (arr[j][attr] > arr[j + 1][attr]) {
+		          tempExchangVal = arr[j]
+		          arr[j] = arr[j + 1]
+		          arr[j+1] = tempExchangVal
+		        }
+		      }
+		      i--
+		    }
+		    return arr
+		  }
+		  let newArr2 = incrementing(arr, 'id')
+		  console.log(newArr2)
+		</script>
 	</body>
 </html>
